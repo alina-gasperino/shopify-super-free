@@ -1,0 +1,83 @@
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+<link rel="preload" href="{{ 'component-rte.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+
+
+<div class="section-{{ section.id }}-padding page-collection">
+
+
+  <div>
+    {{ 'component-facets.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+
+    <div class="collection-title">
+      <div class="flex-row">
+        <h1 class="title center">{{ collection.title }}</h1>
+        <span class="annotation">{{ collection.all_products_count }}</span>
+      </div>
+    </div>
+
+    <div class="product-grid-container" id="ProductGridContainer">
+      {%- paginate collection.products by section.settings.products_per_page -%}
+        {%- if collection.products.size == 0 -%}
+          <p>There are no products in this collection.</p>
+        {%- else -%}
+          <div class="collection {% if collection.handle == 'shop' %}shop{% endif %} page-width">
+            <div class="loading-overlay gradient"></div>
+            <ul id="product-grid" data-id="{{ section.id }}" class="product-grid page-width plain">
+              {% if collection.description != blank %}
+              <li class="grid__item description-wrapper">
+                <div class="text-wrapper">
+                  <p>{{ collection.description }}</p>
+                </div>
+              </li>
+            {% endif %}
+              {%- for product in collection.products -%}
+                {% assign lazy_load = false %}
+                {%- if forloop.index > 2 -%}
+                  {%- assign lazy_load = true -%}
+                {%- endif -%}
+                <li class="grid__item">
+                  {% render 'card-product',
+                    card_product: product,
+                    media_aspect_ratio: 'square',
+                    show_secondary_image: true,
+                    show_vendor: false,
+                    show_rating: false,
+                    lazy_load: lazy_load,
+                    show_quick_add: false,
+                    section_id: section.id
+
+                  %}
+                </li>
+              {%- endfor -%}
+            </ul>
+    
+            {%- if paginate.pages > 1 -%}
+              {% render 'pagination', paginate: paginate, anchor: '' %}
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endpaginate -%}
+    </div>
+
+    {% if collection.handle == 'local' %}
+    <div class="button-wrapper">
+      <a class="button btn-rainbow" href="/collections/shop-all"><span>Shop all products</span></a>
+    </div>
+  {% endif %}
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "t:sections.main-collection-product-grid.name",
+  "class": "section"
+}
+{% endschema %}

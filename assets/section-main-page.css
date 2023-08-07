@@ -1,0 +1,41 @@
+.page-title {
+  margin-top: 0;
+}
+
+
+
+.page-placeholder-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.page-placeholder {
+  width: 52.5rem;
+  height: 52.5rem;
+}
+
+.main-page-title {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.section-main-page .rte {
+  max-width: 80ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 998px) {
+  .section-main-page .rte {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+.section-main-page .rte p+p {
+  margin-bottom: 24px;
+}
+
+.section-main-page .rte:last-child {
+  margin-bottom: 48px;
+}

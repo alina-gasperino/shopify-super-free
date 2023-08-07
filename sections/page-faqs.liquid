@@ -1,0 +1,84 @@
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js" defer="defer"></script>
+<div class="page-width page-faqs">
+    <h1 class="page-title title">
+      {{ page.title | escape }}
+    </h1>
+    {% comment %} <div class="faqs-list"> {% endcomment %}
+    <div class="faqs-list" data-masonry='{ "itemSelector": ".faq-item-wrapper", "columnWidth": ".faq-item-wrapper", "gutter": 24 }'>
+        {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'faq' %}
+            <div class="faq-item-wrapper">
+            <div class="faq-item" {{ block.shopify_attributes }}>
+              <div>
+                <h2 class="title">{{ block.settings.title }}</h2>
+                <div class="rte">{{ block.settings.text }}</div>
+              </div>
+            </div>
+            </div>
+        {% endcase %}
+      {% endfor %}
+      </div>
+  </div>
+  
+  {% style %}
+
+  .faqs-list {
+    margin-bottom: 180px;
+  }
+  .faq-item-wrapper {
+    margin-bottom: 24px;
+    width: calc( ( 100% - 24px ) / 2 );
+  }
+  @media (max-width: 998px) {
+    .faq-item-wrapper {
+      width: 100%;
+    }
+  }
+  .faq-item {
+    background: var(--white);
+    padding: 24px;
+    text-align: center;
+  }
+ 
+  .faq-item .title {
+    margin-bottom: 32px;
+    font-size:  36px;
+    line-height: 50px;
+  }
+  .faq-item .rte strong {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29px;
+    letter-spacing: 0em;
+  }
+  .faq-item .rte > *:not(:last-child) {
+    margin-bottom: 24px;
+  }
+  {% endstyle %}
+  
+  {% schema %}
+  {
+    "name": "Page",
+    "blocks": [
+      {
+        "name": "FAQ",
+        "type": "faq",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text"
+          }
+        ]
+      }
+    ]
+  }
+  {% endschema %}
+  
+  

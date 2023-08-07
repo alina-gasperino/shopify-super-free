@@ -1,0 +1,74 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "7b74ea3a-c660-4762-99ef-9b931aea5e43": {
+          "type": "title",
+          "settings": {}
+        },
+        "0ae9ca77-c074-4080-9aab-b13893312d16": {
+          "type": "price",
+          "settings": {}
+        },
+        "34d1b107-72c6-42e7-8072-bf5ccab0fa5f": {
+          "type": "description",
+          "settings": {}
+        },
+        "aa7def3f-3366-4f3c-87aa-cce8fd49b7a4": {
+          "type": "shopify:\/\/apps\/back-in-stock-restock\/blocks\/backinstock\/a2a0a648-aa81-4132-98a8-31e62b1f3e83",
+          "settings": {}
+        },
+        "e0d66f31-3685-453b-b577-d254d80f3575": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "dropdown"
+          }
+        },
+        "947a3115-e477-4650-8b4c-326df7d43ab1": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false
+          }
+        }
+      },
+      "block_order": [
+        "7b74ea3a-c660-4762-99ef-9b931aea5e43",
+        "0ae9ca77-c074-4080-9aab-b13893312d16",
+        "34d1b107-72c6-42e7-8072-bf5ccab0fa5f",
+        "aa7def3f-3366-4f3c-87aa-cce8fd49b7a4",
+        "e0d66f31-3685-453b-b577-d254d80f3575",
+        "947a3115-e477-4650-8b4c-326df7d43ab1"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "media_position": "left",
+        "gallery_layout": "thumbnail_slider",
+        "media_size": "large",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "show",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "1668645280b8cf3c4e": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "ad49fdaf-2ba7-4f8c-9f25-8bfa26cfd2d2": {
+      "type": "scrolling-banner",
+      "settings": {
+        "text": "ANTI INFLAMMATORY ADAPTOGENIC ACTIVATED PARASYMPATHETIC PAIN FREE GUILT FREE SUPERFREE SUPERFOOD PLANT RICH CLEAN EATING CLEAR MIND GUT HEALING"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1668645280b8cf3c4e",
+    "ad49fdaf-2ba7-4f8c-9f25-8bfa26cfd2d2"
+  ]
+}
